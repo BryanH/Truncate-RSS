@@ -1,0 +1,26 @@
+.input-aligned {
+  width: 550px
+}
+
+.input-aligned .input-line {
+  clear: both;
+  padding: 5px 0;
+  margin: 10px 0;
+  height: 40px
+}
+
+.input-aligned .prompt {
+  float: left;
+  width: 250px;
+  text-align: right
+}
+
+.input-aligned .input {
+  float: right;
+  text-align: left;
+  width: 280px
+}
+
+.input-aligned .spacer {
+  clear: both
+}

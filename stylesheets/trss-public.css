@@ -1,0 +1,10 @@
+/*
+ Put formatting for hiding the comments here
+ */
+div.story p, div.story div.comment_template, .post-commentmeta, .post-commentmeta-single {
+  display: none;
+}
+
+div.story div.storyContent p, div.story div.postmeta p {
+  display: block;
+}

@@ -1,0 +1,7 @@
+#edit-slug-buttons {
+  display: none !important
+}
+fieldset.inline-edit-col-left div.inline-edit-col label .input-text-wrap {
+  visibility:hidden !important;
+}
+
