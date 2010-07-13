@@ -1,8 +1,8 @@
 <?php
 /*
 Plugin Name: Truncate RSS
-Plugin URI: http://www.chron.com/apps/adbxh0/wp/plugins/truncate-rss/
-Description: Truncates blog posts that come from RSS feeds.
+Plugin URI: http://github.com/BryanH/Truncate-RSS
+Description: Truncate/(Dis)Allow Comments/(Dis)Allow editing permalink for blog posts that come from RSS feeds.
 Version: 0.9
 Author: Bryan Hanks, PMP
 Author URI: http://www.chron.com/apps/adbxh0/

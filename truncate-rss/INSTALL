@@ -1,14 +1,11 @@
-To install, unpack the files into the "plugins/truncate-rss" directory
+== Installation ==
 
-For example
+1) Unpack the files into the "/wp-content/plugins/truncate-rss" directory
 
-/var/www/wordpress/wp-content/plugins/truncate-rss/
-  .
-  (files)
-  .
+2) Activate the plugin through the 'Plugins' menu in WordPress
 
-Go into the admin tool and click on the settings menu.
-You will see a "Truncate-RSS" link in that menu. Click
-that and then change any options you wish.
+3) Go into the admin tool and click on the settings menu. You will see a "Truncate-RSS" link in that menu. Click that and then change any options you wish. 
 
-Click save and happy blogging!
+4) Click save
+
+Happy blogging!

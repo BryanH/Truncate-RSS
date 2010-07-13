@@ -1,8 +1,8 @@
-Truncate-RSS
--=--------=-
+=== Truncate-RSS ===
+Tested with WP version: 2.9.2
 
-This WordPress Plugin will allow you to alter the display of
-posts that were imported via RSS feeds.
+== Description ==
+This WordPress Plugin will allow you to alter the display of posts that were imported via RSS feeds.
 
 Options include:
 
