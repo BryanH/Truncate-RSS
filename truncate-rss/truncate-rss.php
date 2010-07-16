@@ -33,6 +33,14 @@ define('DEFAULT_META_LENGTH', '75');
 define('DEFAULT_META_COMMENTS', '0');
 define('DEFAULT_META_KEYWORDS', 'syndication_permalink');
 define('DEFAULT_EDIT_PERMALINK', '0');
+/* get ready for any scripts/styles */
+add_action('wp_print_styles', 'enqueue_my_styles');
+function enqueue_my_styles() {
+	list ($css_file, $css_url) = get_css_location('trss-admin.css');
+	wp_enqueue_style('tradmin-css', $css_url);
+//		wp_die(__('SNN jIM!'));
+}
+
 /* Option menu - set truncation */
 add_action('admin_menu', 'trss_plugin_menu');
 function trss_plugin_menu() {
@@ -93,12 +101,17 @@ function trss_options() {
 	}
 ?>
 <div class="wrap">
-<h2><?php echo( __( "'Truncate RSS' Settings", 'trss-test' ) ); ?></h2>
+<h2><?php _e( "'Truncate RSS' Settings", 'menu_trss' ); ?></h2>
+<p><?php
 
-<div class="input-aligned">
-<form name="form1" method="post" action="#">
-<div class="spacer">&nbsp;</div>
-<input type="hidden" name="<?php echo $hidden_field_name; ?>" value="Y" />
+	_e("Instructions: Pick the number of words you wish to limit RSS posts on index pages. The entry itself will have the full post, unless you've configured your importer to link back to the original source.");
+	echo ' ';
+	_e("The Metatag field is used to match to the metadata in RSS posts. You probably don't need to change the default setting.");
+?></p><div class="input-aligned"> <form name="form1" method="post" action="#">
+<div class="spacer">&nbsp;</div><input type="hidden" name="<?php echo $hidden_field_name; ?>" value="Y" />
+	<div class="input-line"><span class="prompt"><?php _e("Metatag to filter on:", 'menu-trss'); ?></span>
+<span class="input"><input type="text" name="<?php echo META_KEYWORDS; ?>" value="<?php echo $opt_meta_words; ?>" /></span>
+</div>
 <div class="input-line"><span class="prompt"><?php _e("Maximum number of words to display:", 'menu-trss' ); ?></span>
 <span class="input"><input type="text" name="<?php echo META_LENGTH; ?>" value="<?php echo $opt_max_words; ?>" size="3" maxlength="2" /></span>
 </div>
@@ -107,9 +120,6 @@ function trss_options() {
 </div>
 <div class="input-line"><span class="prompt"><?php _e("Allow comments:", 'menu-trss' ); ?></span>
 <span class="input"><input type="checkbox" name="<?php echo META_COMMENTS; ?>"<? if( false == empty($opt_allow_comments) ) { ?> checked="checked"<?php } ?> /></span>
-</div>
-<div class="input-line"><span class="prompt"><?php _e("Metatag to filter on:", 'menu-trss' ); ?></span>
-<span class="input"><input type="text" name="<?php echo META_KEYWORDS; ?>" value="<?php echo $opt_meta_words; ?>" /></span>
 </div>
 <div class="input-line"><span class="prompt">&nbsp;</span>
 <span class="input"><input type="submit" name="Submit" class="button-primary" value="<?php esc_attr_e('Save Changes') ?>" /></span>
@@ -134,7 +144,7 @@ function get_css_location($css) {
 	);
 	return $css_location;
 }
-add_action('admin_head', 'trss_format_options');
+/*add_action('admin_head', 'trss_format_options');
 function trss_format_options() {
 	if (function_exists('wp_enqueue_style')) {
 		list ($css_file, $css_url) = get_css_location('trss-admin.css');
@@ -172,6 +182,7 @@ function trss_format_options() {
 		wp_die(__("Can't enqueue stylesheets"));
 	}
 }
+*/
 add_filter("comments_open", 'trss_disable_comments');
 add_filter("pings_open", 'trss_disable_comments');
 /*
@@ -194,6 +205,28 @@ function trss_disable_comments($open) {
 		}
 	}
 }
+/*
+ * from http://beerpla.net/2010/01/13/wordpress-plugin-development-how-to-include-css-and-javascript-conditionally-and-only-when-needed-by-the-posts/
+ * This allows full access to the posts before the head is rendered
+  */
+//add_filter('the_posts', 'conditionally_add_scripts_and_styles');
+//function conditionally_add_scripts_and_styles($posts) {
+//	if (empty ($posts))
+//		return $posts;
+//	$shortcode_found = false; // use this flag to see if styles and scripts need to be enqueued
+//	foreach ($posts as $post) {
+//		if (stripos($post->post_content, '[code]')) {
+//			$shortcode_found = true; // bingo!
+//			break;
+//		}
+//	}
+//	if ($shortcode_found) {
+//		// enqueue here
+//		wp_enqueue_style('my-style', '/style.css');
+//		wp_enqueue_script('my-script', '/script.js');
+//	}
+//	return $posts;
+//}
 //add_filter('get_comment', 'trss_handle_comments');
 /*
  * Apply comment-hiding stylesheet if:
