@@ -90,6 +90,7 @@ function trss_options() {
 	$hidden_field_name = 'mt_submit_hidden';
 	//$data_max_words = META_LENGTH;
 	if (isset ($_POST[$hidden_field_name]) && 'Y' == $_POST[$hidden_field_name]) {
+		check_admin_referer( 'truncate_rss-admin_settings' );
 		$opt_max_words = trss_update_from_post(META_LENGTH);
 		$opt_allow_comments = trss_update_from_post(META_COMMENTS);
 		$opt_meta_words = trss_update_from_post(META_KEYWORDS);
@@ -108,7 +109,11 @@ function trss_options() {
 	echo ' ';
 	_e("The Metatag field is used to match to the metadata in RSS posts. You probably don't need to change the default setting.");
 ?></p><div class="input-aligned"> <form name="form1" method="post" action="#">
-<div class="spacer">&nbsp;</div><input type="hidden" name="<?php echo $hidden_field_name; ?>" value="Y" />
+<div class="spacer">&nbsp;</div><input type="hidden" name="<?php echo $hidden_field_name; ?>" value="Y" /><?php
+if( function_exists( 'wp_nonce_field' ) ) {
+  wp_nonce_field('truncate_rss-admin_settings' );
+}
+?>
 	<div class="input-line"><span class="prompt"><?php _e("Metatag to filter on:", 'menu-trss'); ?></span>
 <span class="input"><input type="text" name="<?php echo META_KEYWORDS; ?>" value="<?php echo $opt_meta_words; ?>" /></span>
 </div>
