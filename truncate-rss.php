@@ -1,15 +1,15 @@
 <?php
 /*
-Plugin Name: Truncate RSS
-Plugin URI: http://github.com/BryanH/Truncate-RSS
-Description: Truncate/(Dis)Allow Comments/(Dis)Allow editing permalink for blog posts that come from RSS feeds.
-Version: 0.9
-Author: Bryan Hanks, PMP
-Author URI: http://www.chron.com/apps/adbxh0/
-License: GPLv3
-*/
-/*
-  Copyright 2010 Houston Chronicle, Inc.
+ * Plugin Name: Truncate RSS
+ * Plugin URI: http://github.com/BryanH/Truncate-RSS
+ * Description: Truncate/(Dis)Allow Comments/(Dis)Allow editing permalink for blog posts that come from RSS feeds.
+ * Version: 0.90
+ * Author: HBJitney, LLC
+ * Author URI: http://hbjitney.com/
+ * License: GPL3
+ * License: GPLv3
+
+ Copyright 2010 Houston Chronicle, Inc.
 
   Truncate RSS is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
